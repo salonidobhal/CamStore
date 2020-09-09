@@ -50,6 +50,14 @@ class UserSignUp extends React.Component {
         });
     }
 
+    // onChangeHandler=event=>{
+    //     this.setState({
+    //       photo: event.target.files[0],
+    //       selectedFile: event.target.files[0],
+    //       loaded: 0,
+    //     })
+    // }
+
     handleSubmit(event) {
         event.preventDefault();
         console.log(this.state);
@@ -66,19 +74,21 @@ class UserSignUp extends React.Component {
             this.state.confirmPassword !== this.state.password) &&
             (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email))) {
             
-                //const formdata = new FormData()
-            axios.post('/api/signUp', {
-                name: this.state.name,
-                sex: this.state.gender,
-                dateOfBirth: this.state.dateOfBirth,
-                placeOfBirth: this.state.placeOfBirth,
-                email: this.state.email,
-                userName: this.state.userName,
-                password: this.state.password,
-                photo: this.state.photo
-            })
+                const formdata = new FormData();
+                formdata.append('name', this.state.name);
+                formdata.append('sex', this.state.gender);
+                formdata.append('email', this.state.email);
+                formdata.append('dateOfBirth', this.state.dateOfBirth);
+                formdata.append('placeOfBirth', this.state.placeOfBirth);
+                formdata.append('username', this.state.userName);
+                formdata.append('password', this.state.password);
+                formdata.append('photo', this.state.photo);
+                
+            const config = {
+                headers: { 'content-type': 'multipart/form-data' }
+            }
+            axios.post('/api/signUp', formdata)
                 .then(res => {
-                   
                         console.log("SignUp Successful");
                 })
 

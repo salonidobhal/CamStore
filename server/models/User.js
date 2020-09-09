@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     name: { type: String, required: true },
     sex: { type: String, required: true },
-    dateOfBirth: { type: Date, required: true, min: 1940 - 01 - 01, max: 2020 - 01 - 01 },
+    dateOfBirth: { type: Date, required: true},
     placeOfBirth: { type: String, required: true },
     email: {
         type: String,
