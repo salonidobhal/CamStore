@@ -23,7 +23,7 @@ class SignIn extends React.Component {
     }
 
     componentWillUnmount(){
-        axios.get('/user: username', {
+        axios.get('/api/user: username', {
             params : {username: this.state.username}/*, {
                 headers:{
                     'Content-Type': 'application/json',

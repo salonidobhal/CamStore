@@ -28,6 +28,6 @@ app.use(express.static('./uploads'));
 
 app.use('/api/signUp', require('./routes/signUp'));
 app.use('/api/signIn', require('./routes/signIn'));
-app.use('/user', require('./routes/userInfo'));
+app.use('/api/user', require('./routes/userInfo'));
 
 module.exports = app ;
