@@ -14,12 +14,12 @@ font-family: 'Lato', sans-serif;
 color:#fff;
 align-self:center ;
 text-align: center;
-background-color:#0f5673;
+background-color: #202666;
 box-shadow: 3px 3px 8px #b1b1b1,
             -3px -3px 8px #ffffff;
 transition: all .75s ease-in-out;
 &:hover{
-    background:#0a4157;
+    background: rgb(30, 60, 155);
 
 }
 &:active{

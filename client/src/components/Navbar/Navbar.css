@@ -1,7 +1,13 @@
 .text{
     color: rgb(30, 10, 78);
     text-transform: capitalize;
+    font-weight: 400;
+    font-size: 1.2em;
 }
 .pointer{
     cursor: pointer;
+}
+
+.nav-color{
+    background: #202666
 }

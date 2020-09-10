@@ -1,9 +1,9 @@
 import React from 'react';
-import { Form, FormGroup, Label, Input, Col, FormFeedback } from 'reactstrap';
-import { Link, Redirect } from 'react-router-dom';
+import { Form, FormGroup, Label, Input, Col, FormFeedback, Modal, ModalBody } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { ButtonContainer } from '../../Button';
-//import Form from '../form'; 
+import './form.css' 
 
 
 
@@ -30,12 +30,16 @@ class UserSignUp extends React.Component {
                 userName: false,
                 password: false,
                 confirmPassword: false
-            }
+            },
+            isSuccessModalOpen: false,
+            isErrorModalOpen: false
         }
 
         this.handleBlur = this.handleBlur.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.toggleSuccessModal = this.toggleSuccessModal.bind(this);
+        this.toggleErrorModal = this.toggleErrorModal.bind(this);
         //this.loginUser = this.loginUser.bind(this);
         // this.formRedirect = this.formRedirect.bind(this);
     }
@@ -47,6 +51,17 @@ class UserSignUp extends React.Component {
 
         this.setState({
             [name]: value
+        });
+    }
+
+    toggleSuccessModal() {
+        this.setState({
+            isSuccessModalOpen: !this.state.isSuccessModalOpen
+        });
+    }
+    toggleErrorModal() {
+        this.setState({
+            isErrorModalOpen: !this.state.isErrorModalOpen
         });
     }
 
@@ -90,10 +105,13 @@ class UserSignUp extends React.Component {
             axios.post('/api/signUp', formdata)
                 .then(res => {
                         console.log("SignUp Successful");
+                        this.toggleSuccessModal();
+                        
                 })
 
                 .catch(err => {
                     console.log(err);
+                    this.toggleErrorModal();
                 });
         }
         else {
@@ -185,6 +203,7 @@ class UserSignUp extends React.Component {
 
         const errors = this.validate(this.state.name, this.state.dateOfBirth, this.state.placeOfBirth, this.state.email, this.state.userName, this.state.password, this.state.confirmPassword);
         return (
+            <React.Fragment>
             <div className="container signup-div mt-5 mb-5 col-md-6 col-sm-6 col-lg-4 ">
                 <Form id="form"
                     method="post"
@@ -227,7 +246,7 @@ class UserSignUp extends React.Component {
                     <FormGroup row >
                         <Label for="sex" md={3}>Gender</Label>
                         <Col md={9}>
-                            <div className="row">
+                            <div className="row px-5">
                                 <div className="ml-auto">
 
                                     <Label>
@@ -375,13 +394,28 @@ Other
 
                     </FormGroup>
                     <div className="link">
-                        <Link to="#" > Already have an account? Sign In.</Link>
+                        <Link to="/signIn" > Already have an account? Sign In.</Link>
                     </div>
 
 
                 </Form>
 
             </div>
+            <Modal isOpen={this.state.isSuccessModalOpen} toggle={this.toggleSuccessModal} >
+            <ModalBody toggle={this.toggleSuccessModal}>
+                <h6>WELCOME TO TH AUTON FAMILY.
+                    PLEASE <a href="/signIn">SIGN IN</a>
+                </h6>
+                
+            </ModalBody>
+        </Modal>
+         <Modal isOpen={this.state.isErrorModalOpen} toggle={this.toggleErrorModal} >
+         <ModalBody toggle={this.toggleErrorModal}>
+         <h6>Something Went Wrong(User may already exist)</h6>
+             
+         </ModalBody>
+     </Modal>
+     </React.Fragment>
 
 
         );

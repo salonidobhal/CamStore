@@ -27,7 +27,7 @@ router.post('/', (req, res, next) => {
             return res.status(500).json(err)
         }
 
-        User.find({ email: req.body.email })
+        User.find({ username: req.body.username })
             .exec()
             .then(user => {
                 if (user.length >= 1) {

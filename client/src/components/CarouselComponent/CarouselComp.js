@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './carousel.css'
+
+import Products from '../Products/Products'
+
 import {
     Carousel,
     CarouselItem,
@@ -66,6 +69,7 @@ import {
     });
   
     return (
+      <React.Fragment>
       <Carousel className="px0"
         activeIndex={activeIndex}
         next={next}
@@ -76,7 +80,12 @@ import {
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
       </Carousel>
+      <Products/>
+      </React.Fragment>
     );
   }
+
   
   export default CarouselComponent;
+
+  

@@ -27,5 +27,7 @@ app.use(cors());
 app.use(express.static('./uploads'));
 
 app.use('/api/signUp', require('./routes/signUp'));
+app.use('/api/signIn', require('./routes/signIn'));
+app.use('/user', require('./routes/userInfo'));
 
 module.exports = app ;

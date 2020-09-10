@@ -1,0 +1,54 @@
+.signup-div {
+    width:700px;
+    height: 60%;
+    padding: 20px 55px 55px 55px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+  }
+
+  .login-div {
+    width:600px;
+    height: 60%;
+    padding: 20px 55px 55px 55px;
+    border-radius: 40px;
+    background: #ecf0f3;
+    box-shadow: 13px 13px 20px #cbced1,
+                -13px -13px 20px #ffffff;
+  }
+
+  .title {
+    text-align: center;
+    font-size: 28px;
+    padding-top: 15px;
+    letter-spacing: 0.5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+
+   
+  }
+  .sub-title {
+    text-align: center;
+    font-size: 15px;
+    padding-top: 7px;
+    letter-spacing: 3px;
+  }
+  .link {
+    padding-top: 2px;
+    text-align: center;
+  }
+  .link a {
+    text-decoration: none;
+    color:#aaa;
+    font-size: 15px;
+    text-align: center;
+    
+
+  }
+
+  .link:hover{
+      transition: all 1s ease-in-out;
+  }
+
+  
